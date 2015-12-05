@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.2-b608 (trunk-7979; 2015-01-21T12:50:19+0000) JAXWS-RI/2.2.11-b150120.1832 JAXWS-API/2.2.12 JAXB-RI/2.2.12-b141219.1637 JAXB-API/2.2.13-b141020.1521 svn-revision#unknown. --><xs:schema xmlns:tns="http://businesslogic.lab07.aipi.cs.pub.ro/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://businesslogic.lab07.aipi.cs.pub.ro/">
+
+<xs:element name="bookInformation" type="tns:BookInformation"/>
+
+<xs:element name="bookInformationDetailed" type="tns:BookInformationDetailed"/>
+
+<xs:element name="getBooksList" type="tns:getBooksList"/>
+
+<xs:element name="getBooksListResponse" type="tns:getBooksListResponse"/>
+
+<xs:element name="getBooksListWithStockpile" type="tns:getBooksListWithStockpile"/>
+
+<xs:element name="getBooksListWithStockpileResponse" type="tns:getBooksListWithStockpileResponse"/>
+
+<xs:complexType name="getBooksListWithStockpile">
+<xs:sequence>
+<xs:element name="stockpile" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBooksListWithStockpileResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:BookInformationDetailed" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BookInformationDetailed">
+<xs:complexContent>
+<xs:extension base="tns:persistentEntity">
+<xs:sequence>
+<xs:element name="categories" type="xs:string" minOccurs="0"/>
+<xs:element name="formats" type="xs:string" minOccurs="0"/>
+<xs:element name="languages" type="xs:string" minOccurs="0"/>
+<xs:element name="subtitle" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="writers" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="persistentEntity">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getBooksList">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getBooksListResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:BookInformation" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BookInformation">
+<xs:complexContent>
+<xs:extension base="tns:persistentEntity">
+<xs:sequence>
+<xs:element name="collection" type="xs:string" minOccurs="0"/>
+<xs:element name="country" type="xs:string" minOccurs="0"/>
+<xs:element name="edition" type="xs:long" minOccurs="0"/>
+<xs:element name="printingYear" type="xs:long" minOccurs="0"/>
+<xs:element name="publishingHouse" type="xs:string" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+<xs:element name="writers" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>

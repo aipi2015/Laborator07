@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:j2seproject3="http://www.netbeans.org/ns/j2se-project/3" xmlns:xalan="http://xml.apache.org/xslt" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${libs.jaxws21.classpath}"/>
+        </taskdef>
+    </target>
+    <target name="wsimport-client-WriterManager" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/WriterManager"/>
+        <property name="wsdl-WriterManager" location="xml-resources/web-service-references/WriterManager/wsdl/localhost_8080/07-BookStore-JAXWS-Server/WriterManager.wsdl"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/WriterManager" destdir="${build.generated.dir}/jax-wsCache/WriterManager" wsdl="${wsdl-WriterManager}" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/07-BookStore-JAXWS-Server/WriterManager?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${wsdl-WriterManager}"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/WriterManager"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/WriterManager">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-WriterManager" depends="-init-project">
+        <delete dir="${build.generated.dir}/jax-wsCache/WriterManager"/>
+        <delete dir="${build.generated.sources.dir}/jax-ws/ro/pub/cs/aipi/lab07/businesslogic"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-WriterManager"/>
+</project>

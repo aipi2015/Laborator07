@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.3.1-b419 (branches/2.3.1.x-7937; 2014-08-04T08:11:03+0000) JAXWS-RI/2.2.10-b140803.1500 JAXWS-API/2.2.11 JAXB-RI/2.2.10-b140802.1033 JAXB-API/2.2.12-b140109.1041 svn-revision#unknown. --><xs:schema xmlns:tns="http://businesslogic.lab07.aipi.cs.pub.ro/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://businesslogic.lab07.aipi.cs.pub.ro/">
+
+<xs:element name="bookPresentationInformation" type="tns:BookPresentationInformation"/>
+
+<xs:element name="makeSupplyOrderBasedOnStockpile" type="tns:makeSupplyOrderBasedOnStockpile"/>
+
+<xs:element name="makeSupplyOrderBasedOnStockpileResponse" type="tns:makeSupplyOrderBasedOnStockpileResponse"/>
+
+<xs:element name="supplyOrderInformation" type="tns:SupplyOrderInformation"/>
+
+<xs:element name="updateBookPresentationPriceForBooksWithMultipleFormats" type="tns:updateBookPresentationPriceForBooksWithMultipleFormats"/>
+
+<xs:element name="updateBookPresentationPriceForBooksWithMultipleFormatsResponse" type="tns:updateBookPresentationPriceForBooksWithMultipleFormatsResponse"/>
+
+<xs:complexType name="updateBookPresentationPriceForBooksWithMultipleFormats">
+<xs:sequence>
+<xs:element name="numberOfFormats" type="xs:int"/>
+<xs:element name="amount" type="xs:double"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="updateBookPresentationPriceForBooksWithMultipleFormatsResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:BookPresentationInformation" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="BookPresentationInformation">
+<xs:complexContent>
+<xs:extension base="tns:persistentEntity">
+<xs:sequence>
+<xs:element name="bookId" type="xs:long" minOccurs="0"/>
+<xs:element name="formatId" type="xs:long" minOccurs="0"/>
+<xs:element name="price" type="xs:double" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="persistentEntity">
+<xs:sequence>
+<xs:element name="id" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="makeSupplyOrderBasedOnStockpile">
+<xs:sequence>
+<xs:element name="stockpile" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="makeSupplyOrderBasedOnStockpileResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:SupplyOrderInformation" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SupplyOrderInformation">
+<xs:complexContent>
+<xs:extension base="tns:persistentEntity">
+<xs:sequence>
+<xs:element name="bookPresentationId" type="xs:long" minOccurs="0"/>
+<xs:element name="publishingHouseId" type="xs:long" minOccurs="0"/>
+<xs:element name="quantity" type="xs:long" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+</xs:schema>
